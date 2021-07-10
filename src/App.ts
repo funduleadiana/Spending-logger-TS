@@ -1,3 +1,25 @@
+
+interface isPerson {
+    name: string; 
+    age: number; 
+    speak(a: string): void; //returns nothing -console.log()
+    spend(a: number) : number;
+}
+
+const me : isPerson = {
+    name: "Diana",
+    age: 30,
+    speak(text: string): void{
+        console.log(text)
+    },
+    spend(amount: number) : number{
+        console.log('I spent', amount);
+        return amount;
+    }
+}
+
+
+import { textSpanEnd } from "../../../node_modules/typescript/lib/typescript.js";
 import { Invoice } from "./classes/Invoice.js";
 
 

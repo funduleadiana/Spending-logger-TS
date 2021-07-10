@@ -18,6 +18,10 @@ const me : isPerson = {
     }
 }
 
+const greetPerson = (person: isPerson)=> {
+    console.log('hello', person.name);
+}
+greetPerson(me);
 
 import { textSpanEnd } from "../../../node_modules/typescript/lib/typescript.js";
 import { Invoice } from "./classes/Invoice.js";

@@ -27,12 +27,14 @@ const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, 'end');
 });
@@ -101,3 +103,7 @@ const docFive = {
     resourceName: ResourceType.BOOK,
     data: { name: 'shaun' }
 };
+//tuples - similar to arrays - but the type of data in each position in a tuple is fixed once initialised
+let tup = ['Riu', 25, false]; // position 0 must be a string position 1 must be a number position 2 must be a boolean
+let student;
+student = ['cho', 12875];

@@ -44,11 +44,13 @@ const list = new ListTemplate(ul);
 
 form.addEventListener('submit', (e: Event)=> {
     e.preventDefault();
+    let values: [string, string, number]
+    values = [tofrom.value, details.value, amount.valueAsNumber]
     let doc: HasFormatter;
     if(type.value === 'invoice'){
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     } else{
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     } 
     list.render(doc, type.value, 'end')
 })
@@ -137,3 +139,10 @@ const docFive: Resource<object> = {
         data: {name: 'shaun'}
     
     }
+
+
+    //tuples - similar to arrays - but the type of data in each position in a tuple is fixed once initialised
+    let tup: [string, number, boolean] = ['Riu', 25, false] // position 0 must be a string position 1 must be a number position 2 must be a boolean
+
+    let student: [string, number];
+    student= ['cho', 12875]

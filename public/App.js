@@ -58,24 +58,46 @@ form.addEventListener('submit', (e) => {
 // }
 // greetPerson(me);
 //Generics - reusable blocks of code which can be used with different types
-const addUID = (obj) => {
-    let uid = Math.floor(Math.random() * 100);
-    return Object.assign(Object.assign({}, obj), { uid });
-    //T captures what properties are on the object
-    //But we do not specify that it has to be an object
-};
-let docThree = addUID({ name: 'yoshi', age: 40 });
-console.log(docThree);
-let docFour = addUID('hello'); // We can do this because we have not specified that it needs to be an object
+// const addUID = <T>(obj: T)=> {
+//     let uid = Math.floor(Math.random() * 100);
+//     return {...obj, uid}
+//     //T captures what properties are on the object
+//     //But we do not specify that it has to be an object
+// }
+// let docThree = addUID({name: 'yoshi', age: 40});
+// console.log(docThree)
+// let docFour = addUID('hello') // We can do this because we have not specified that it needs to be an object
+// //We need to extend object and add the properties like below
+// //const addUID = <T extends {name: string}>(obj: T)=> {}
+// //With interfaces
+// interface Resource <T>{
+//     uid: number;
+//     resourceName: string;
+//     data: T;
+// }
+// const docFive: Resource<object> = {
+//     uid: 1,
+//     resourceName: 'person',
+//     data: {name: 'shaun'}
+// }
+// console.log(docFive)
+// const docSix : Resource<string[]>={
+//     uid: 2,
+//     resourceName: 'shoppingList',
+//     data: ['bread', 'milk', 'toilet roll']
+// }
+// console.log(docSix)
+//Enums
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
 const docFive = {
     uid: 1,
-    resourceName: 'person',
+    resourceName: ResourceType.BOOK,
     data: { name: 'shaun' }
 };
-console.log(docFive);
-const docSix = {
-    uid: 2,
-    resourceName: 'shoppingList',
-    data: ['bread', 'milk', 'toilet roll']
-};
-console.log(docSix);

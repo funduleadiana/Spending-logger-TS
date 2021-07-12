@@ -57,3 +57,25 @@ form.addEventListener('submit', (e) => {
 //     console.log('hello', person.name);
 // }
 // greetPerson(me);
+//Generics - reusable blocks of code which can be used with different types
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+    //T captures what properties are on the object
+    //But we do not specify that it has to be an object
+};
+let docThree = addUID({ name: 'yoshi', age: 40 });
+console.log(docThree);
+let docFour = addUID('hello'); // We can do this because we have not specified that it needs to be an object
+const docFive = {
+    uid: 1,
+    resourceName: 'person',
+    data: { name: 'shaun' }
+};
+console.log(docFive);
+const docSix = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk', 'toilet roll']
+};
+console.log(docSix);
